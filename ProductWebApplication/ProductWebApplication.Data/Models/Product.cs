@@ -8,11 +8,6 @@ namespace ProductWebApplication.Data.Models
 {
     public class Product
     {
-        public Product()
-        {
-            Id = new Guid();
-        }
-
         [Key]
         public Guid Id { get; set; }
         public string Name { get; set; }
