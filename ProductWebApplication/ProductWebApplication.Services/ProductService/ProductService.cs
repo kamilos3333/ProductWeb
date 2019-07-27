@@ -30,7 +30,7 @@ namespace ProductWebApplication.Services.ProductService
             await db.SaveChangesAsync();
         }
 
-        public async Task<IList<Product>> GetAllProduct()
+        public async Task<IEnumerable<Product>> GetAllProduct()
         {
             return await db.Products.ToListAsync();
         }

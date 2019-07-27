@@ -8,7 +8,7 @@ namespace ProductWebApplication.Services.ProductService.Interface
 {
     public interface IProductService
     {
-        Task<IList<Product>> GetAllProduct();
+        Task<IEnumerable<Product>> GetAllProduct();
         Task<Product> GetProductId(Guid id);
         Task Insert(Product product);
         Task Delete(Product product);

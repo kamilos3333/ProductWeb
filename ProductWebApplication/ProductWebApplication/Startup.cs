@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ProductWebApplication.Data;
+using ProductWebApplication.Services.ProductService;
+using ProductWebApplication.Services.ProductService.Interface;
 
 namespace ProductWebApplication
 {
@@ -31,6 +33,7 @@ namespace ProductWebApplication
             var connection = @"Server=(localdb)\mssqllocaldb;Database=DatabaseProduct;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<ProductContext>
                 (options => options.UseSqlServer(connection));
+            services.AddTransient<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
