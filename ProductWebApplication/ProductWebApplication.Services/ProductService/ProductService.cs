@@ -4,7 +4,6 @@ using ProductWebApplication.Data.Models;
 using ProductWebApplication.Services.ProductService.Interface;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProductWebApplication.Services.ProductService

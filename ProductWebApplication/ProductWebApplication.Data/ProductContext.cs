@@ -32,7 +32,7 @@ namespace ProductWebApplication.Data
                 }
             );
         }
-
+        
         public DbSet<Product> Products { get; set; }
     }
 }
