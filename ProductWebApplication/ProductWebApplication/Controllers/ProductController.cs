@@ -2,7 +2,6 @@
 using ProductWebApplication.Data.Models;
 using ProductWebApplication.Services.ProductService.Interface;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ProductWebApplication.Controllers
@@ -33,7 +32,7 @@ namespace ProductWebApplication.Controllers
 
             if (product is null)
                 return NotFound();
-
+            
             return Ok(product);
         }
 

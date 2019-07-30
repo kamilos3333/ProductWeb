@@ -6,7 +6,6 @@ using ProductWebApplication.Services.ProductService.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -65,7 +64,7 @@ namespace ProductWebApplication.Test
             var service = new Mock<IProductService>();
             service.Setup(x => x.Edit(testItem));
             var apiController = new ProductController(service.Object);
-            var editFakeData = await apiController.UpdateProduct(testItem.Id,testItem);
+            var editFakeData = await apiController.UpdateProduct(testItem.Id, testItem);
             Assert.IsType<OkResult>(editFakeData);
         }
 
@@ -87,8 +86,8 @@ namespace ProductWebApplication.Test
             var service = new Mock<IProductService>();
             service.Setup(x => x.GetProductId(testGuid)).ReturnsAsync(GetTestProduct().Find(x => x.Id == testGuid));
             var apiController = new ProductController(service.Object);
-            var notFoundResult = await apiController.GetProductById(testGuid);
-            Assert.IsType<OkObjectResult>(notFoundResult);
+            var okResult = await apiController.GetProductById(testGuid);
+            Assert.IsType<OkObjectResult>(okResult);
         }
 
         [Fact]
