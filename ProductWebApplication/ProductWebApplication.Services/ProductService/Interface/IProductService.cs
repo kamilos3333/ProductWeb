@@ -11,7 +11,7 @@ namespace ProductWebApplication.Services.ProductService.Interface
         Task<IEnumerable<Product>> GetAllProduct();
         Task<Product> GetProductId(Guid id);
         Task Insert(Product product);
-        Task Delete(Product product);
+        Task Delete(Guid id);
         Task Edit(Product product);
     }
 }

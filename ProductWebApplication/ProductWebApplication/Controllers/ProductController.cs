@@ -19,49 +19,49 @@ namespace ProductWebApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Product>> Get()
+        public async Task<IActionResult> List()
         {
-            return await productService.GetAllProduct();
+            var product = await productService.GetAllProduct();
+            return Ok(product);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> Get(Guid id)
+        public async Task<IActionResult> GetProductById(Guid id)
         {
-            var item = await productService.GetProductId(id);
+            var product = await productService.GetProductId(id);
 
-            if (item is null)
+            if (product is null)
                 return NotFound();
 
-            return item;
+            return Ok(product);
         }
 
         // POST api/values
         [HttpPost]
-        public async Task<ActionResult<Product>> Post(Product value)
+        public async Task<IActionResult> AddProduct(Product product)
         {
-            await productService.Insert(value);
-            return CreatedAtAction(nameof(Product), new { id = value.Id }, value);
+            await productService.Insert(product);
+            return CreatedAtAction(nameof(Product), new { id = product.Id }, product);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Guid id, Product value)
+        public async Task<IActionResult> UpdateProduct(Guid id, Product product)
         {
-            if (id != value.Id)
+            if (id != product.Id)
                 return BadRequest();
 
-            await productService.Edit(value);
-            return NoContent();
+            await productService.Edit(product);
+            return Ok();
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> RemoveProduct(Guid id)
         {
-            var value = await productService.GetProductId(id);
-            await productService.Delete(value);
-            return NoContent();
+            await productService.Delete(id);
+            return Ok();
         }
     }
 }

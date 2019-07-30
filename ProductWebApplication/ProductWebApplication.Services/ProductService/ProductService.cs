@@ -16,9 +16,10 @@ namespace ProductWebApplication.Services.ProductService
         {
             this.db = db;
         }
-
-        public async Task Delete(Product product)
+        
+        public async Task Delete(Guid id)
         {
+            var product = await db.Products.FindAsync(id);
             db.Remove(product);
             await db.SaveChangesAsync();
         }
@@ -28,7 +29,7 @@ namespace ProductWebApplication.Services.ProductService
             db.Update(product);
             await db.SaveChangesAsync();
         }
-
+        
         public async Task<IEnumerable<Product>> GetAllProduct()
         {
             return await db.Products.ToListAsync();
