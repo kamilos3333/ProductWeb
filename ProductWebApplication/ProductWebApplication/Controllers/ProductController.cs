@@ -41,6 +41,9 @@ namespace ProductWebApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product)
         {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
             await productService.Insert(product);
             return CreatedAtAction(nameof(Product), new { id = product.Id }, product);
         }
